@@ -1,0 +1,35 @@
+extends layout 
+
+block content 
+    form(id='form' method='post' action='/create')
+        label(for='username') Username: 
+        input(type='text' name='username')
+        br
+        label(for='email') Email: 
+        input(type='text' name='email')
+        br
+        label(for='age') Age: 
+        input(type='text' name='age')
+        br
+        label(for='answer1')  Question 1: 
+        select(name='answer1')
+            option(value='1') 1
+            option(value='2') 2
+            option(value='3') 3
+            option(value='4') 4 
+        br
+        label(for='answer2')  Question 2: 
+        select(name='answer1')
+            option(value='1') 1
+            option(value='2') 2
+            option(value='3') 3
+            option(value='4') 4 
+        br
+        label(for='answer3')  Question 3: 
+        select(name='answer1')
+            option(value='1') 1
+            option(value='2') 2
+            option(value='3') 3
+            option(value='4') 4 
+        br
+        input(type='submit' value='Add User')

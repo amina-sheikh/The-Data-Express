@@ -9,7 +9,14 @@ const dbName = 'myData';
 const db = client.db(dbName);
 const collection = db.collection('Users');
 
+// Creates the create user page
+exports.create = (req, res) => {
+    res.render('create', {
+        title: 'Add Person'
+    });
+};
 
+// Stores the data from the create user page
 exports.createUser = async (req, res) => {
     await client.connect();
     let person = {
@@ -23,5 +30,5 @@ exports.createUser = async (req, res) => {
     const insertResult = await collection.insertOne(person);
     client.close();
     console.log(req.body.name + ' added');
-    res.redirect('/');
+    res.redirect('/'); // change path to the login page's path
 }
