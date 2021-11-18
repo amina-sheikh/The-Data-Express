@@ -6,7 +6,7 @@ const express = require('express'),
 const app = express();
 
 app.set('view engine', 'pug');
-app.set('views', __dirname + '/views');
+app.set('views', 'C:/Users/ilangi/Documents/MTM282/GroupProject/The-Data-Express/Frontend' + '/views');
 app.use(express.static(path.join(__dirname, '/public')));
 
 const urlencodedParser = express.urlencoded({
