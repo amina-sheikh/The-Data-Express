@@ -7,3 +7,21 @@ const client = new MongoClient(url);
 
 const dbName = 'myData';
 const db = client.db(dbName);
+const collection = db.collection('Users');
+
+
+exports.createUser = async (req, res) => {
+    await client.connect();
+    let person = {
+        username: req.body.username,
+        email: req.body.email,
+        age: req.body.age,
+        answer1: req.body.answer1,
+        answer2: req.body.answer2,
+        answer3: req.body.answer3 
+    };
+    const insertResult = await collection.insertOne(person);
+    client.close();
+    console.log(req.body.name + ' added');
+    res.redirect('/');
+}
