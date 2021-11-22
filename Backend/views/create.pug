@@ -1,0 +1,36 @@
+extends layout 
+
+block content 
+    form(id='form' method='post' action='/create')
+        label(for='username') Username: 
+        input(type='text' name='username')
+        br
+        label(for='email') Email: 
+        input(type='text' name='email')
+        br
+        label(for='age') Age: 
+        input(type='text' name='age')
+        br 
+        //- password here??
+        label(for='answer1')  What is your favorite pet? 
+        select(name='answer1')
+            option(value='Dog') Dog
+            option(value='Cat') Cat
+            option(value='Snake') Snake
+            option(value='Fish') Fish
+        br
+        label(for='answer2')  How do you get to school?
+        select(name='answer2')
+            option(value='Bus') Bus
+            option(value='Trax') Trax
+            option(value='Car') Car
+            option(value='Bike') Bike 
+        br
+        label(for='answer3')  What is your favorite snack? 
+        select(name='answer3')
+            option(value='Chips') Chips
+            option(value='Candy') Candy
+            option(value='Crackers') Crackers
+            option(value='Cookies') Cookies 
+        br
+        input(type='submit' value='Add User')
