@@ -9,16 +9,16 @@ block content
             th 
             th 
             th 
-        each item in people
-            tr
-                td
-                    a(href='/details/' + item._id) #{item._id} 
-                td #{item.name}
-                td #{item.age}
-                td #{item.species} 
-                td 
-                    a(href='/edit/' + item._id) Edit 
-                td 
-                    a(href='/delete/' + item._id) Delete
-    p
+        //- each item in user 
+        //-     tr
+        //-         td
+        //-             a(href='/details/' + item._id) #{item._id} 
+        //-         td #{item.name}
+        //-         td #{item.age}
+        //-         td #{item.species} 
+        //-         td 
+        //-             a(href='/edit/' + item._id) Edit 
+        //-         td 
+        //-             a(href='/delete/' + item._id) Delete
+    //-p
         a(href='/create') Add new person
