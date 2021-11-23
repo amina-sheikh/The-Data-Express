@@ -1,19 +1,47 @@
 extends layout
 
 block content 
-    form(id='form' method='post' action='/edit/' + person._id)
-        label(for='name') Name: 
-        input(type='text' name='name' value=person.name)
+    form(id='form' method='post' action='/edit/' + users._id)
+        //- username
+        label(for='username') Username: 
+        input(type='text' name='username' value=users.username)
         br
+        //- email
+        label(for='email') Email:
+        input(type='text' name='email' value=users.email)
+        br
+        //- age
         label(for='age') Age:
-        input(type='text' name='age' value=person.age)
+        input(type='text' name='age' value=users.age)
         br
-        label(for='species') Species: 
-        select(name='species')
-            option(selected = person.species) #{person.species}
-            option(value='Human') Human
-            option(value='Vampire') Vampire
-            option(value='Werewolf') Werewolf
-            option(value='Cyborg') Cyborg
+        //- password
+        label(for='password') Password:
+        input(type='text' name='password' value=users.password)
         br
-        input(type='submit' value='Update Person')
+        //- answer1
+        label(for='answer1') What is your favorite Pet: 
+        select(name='answer1')
+            option(selected = users.answer1) #{users.answer1}
+            option(value='Dog') Dog
+            option(value='Cat') Cat
+            option(value='Snake') Snake
+            option(value='Fish') Fish
+        br
+        //- answer2
+        label(for='answer2') How do you get to school: 
+        select(name='answer2')
+            option(selected = users.answer2) #{users.answer2}
+            option(value='Bus') Bus
+            option(value='Trax') Trax
+            option(value='Car') Car
+            option(value='Bike') Bike 
+        br
+        //- answer3
+        label(for='answer3') What is your favorite snack: 
+        select(name='answer3')
+            option(selected = users.answer3) #{users.answer3}
+            option(value='Chips') Chips
+            option(value='Candy') Candy
+            option(value='Crackers') Crackers
+            option(value='Cookies') Cookies 
+        input(type='submit' value='Update User')
