@@ -12,22 +12,23 @@ const collection = db.collection('Users');
 // Creates the create user page
 exports.create = (req, res) => {
     res.render('create', {
-        title: 'Add Person'
+        title: 'Add User'
     });
 };
 
 // Stores the data from the create user page
 exports.createUser = async (req, res) => {
     await client.connect();
-    let person = {
+    let user = {
         username: req.body.username,
         email: req.body.email,
         age: req.body.age,
+        password: req.body.password,
         answer1: req.body.answer1,
         answer2: req.body.answer2,
         answer3: req.body.answer3 
     };
-    const insertResult = await collection.insertOne(person);
+    const insertResult = await collection.insertOne(user);
     client.close();
     console.log(req.body.username + ' added');
     res.redirect('/index'); // change path to the login page's path
