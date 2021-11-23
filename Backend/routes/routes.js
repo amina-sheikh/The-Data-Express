@@ -43,3 +43,16 @@ exports.index = async (req, res) => {
         users: filteredDocs
     });
 };
+
+//Loads the login page
+exports.login = (req, res) => {
+    res.render('login', {
+        title: 'Log In'
+    });
+};
+
+//Gets data from login page and checks if it's in the database
+    //Then, it logs the user in if it is
+exports.loginUser = (req,res) => {
+    res.send('You are succefully logged in')
+}
