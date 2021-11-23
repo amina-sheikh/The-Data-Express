@@ -3,22 +3,16 @@ extends layout
 block content
     table(class = 'gridtable')
         tr
-            th id
             th Name
             th Age
+            th Email
             th 
             th 
-            th 
-        //- each item in user 
-        //-     tr
-        //-         td
-        //-             a(href='/details/' + item._id) #{item._id} 
-        //-         td #{item.name}
-        //-         td #{item.age}
-        //-         td #{item.species} 
-        //-         td 
-        //-             a(href='/edit/' + item._id) Edit 
-        //-         td 
-        //-             a(href='/delete/' + item._id) Delete
-    //-p
-        a(href='/create') Add new person
+            tr
+                td #{users.username}
+                td #{users.age}
+                td #{users.email} 
+                td
+    p
+        a(href='/create') Edit info
+        //- swap '/create' to /edit when edit.pug is finished

@@ -29,13 +29,17 @@ exports.createUser = async (req, res) => {
     };
     const insertResult = await collection.insertOne(person);
     client.close();
-    console.log(req.body.name + ' added');
+    console.log(req.body.username + ' added');
     res.redirect('/index'); // change path to the login page's path
 }
 
 //index reference
-exports.index = (req, res) => {
+exports.index = async (req, res) => {
+    await client.connect();
+    const filteredDocs = await collection.findOne({_id: ObjectId(req.params.id)});
+    client.close();
     res.render('index', {
-        title: 'Index page'
+        title: 'Welcome',
+        users: filteredDocs
     });
 };

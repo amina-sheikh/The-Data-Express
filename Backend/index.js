@@ -16,7 +16,7 @@ const urlencodedParser = express.urlencoded({
 // URLS
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createUser);
-app.get('/index', routes.index);
+app.get('/index/:id', routes.index);
 //app.get('/edit/:id', routes.edit);
 //app.post('/edit/:id', urlencodedParser, routes.editPerson);
 //app.get('/delete/:id', routes.delete);
