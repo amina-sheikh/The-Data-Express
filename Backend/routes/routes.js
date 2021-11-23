@@ -1,5 +1,6 @@
 const { request } = require("express");
 const {MongoClient, ObjectId, ConnectionCheckedInEvent, Collection} = require("mongodb");
+const { fileURLToPath } = require("url");
 
 
 const url = 'mongodb+srv://brosephina:Password123@cluster0.og3yx.mongodb.net/myData?retryWrites=true&w=majority';
@@ -31,7 +32,7 @@ exports.createUser = async (req, res) => {
     const insertResult = await collection.insertOne(user);
     client.close();
     console.log(req.body.username + ' added');
-    res.redirect('/index'); // change path to the login page's path
+    res.redirect('/login'); // change path to the login page's path
 }
 
 //index reference
@@ -54,6 +55,10 @@ exports.login = (req, res) => {
 
 //Gets data from login page and checks if it's in the database
     //Then, it logs the user in if it is
-exports.loginUser = (req,res) => {
-    res.send('You are succefully logged in')
+exports.loginUser = async (req,res) => {
+    await client.connect();
+    const filteredDocs = await collection.findOne({username: req.body.username})
+    client.close();
+    if (filteredDocs.password == req.body.password)
+        res.send(`You are succefully logged in`)
 }
