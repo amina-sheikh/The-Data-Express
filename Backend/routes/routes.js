@@ -60,5 +60,33 @@ exports.loginUser = async (req,res) => {
     const filteredDocs = await collection.findOne({username: req.body.username})
     client.close();
     if (filteredDocs.password == req.body.password)
-        res.send(`You are succefully logged in`)
+        res.redirect(`/index/${filteredDocs._id}`);
 }
+
+exports.edit = async  (req, res) => {
+    await client.connect();
+    const filterDocs = await collection.find(ObjectId(req.params.id)).toArray()
+    client.close();
+    res.render('edit', {
+        title: 'Edit User',
+        users: filterDocs[0]
+    });
+};
+
+exports.editPerson = async (req,res) => {
+    await client.connect();
+    const updateResult = await collection.updateOne(
+        { _id: ObjectId(req.params.id) },
+        { $set: {
+            username: req.body.username,
+            email: req.body.email,
+            age: req.body.age,
+            password: req.body.password,
+            answer1: req.body.answer1,
+            answer2: req.body.answer2,
+            answer3: req.body.answer3
+        }}
+    )
+    client.close();
+    res.redirect(`/index/${req.params.id}`);
+};
