@@ -1,6 +1,7 @@
 const { request } = require("express");
 const {MongoClient, ObjectId, ConnectionCheckedInEvent, Collection} = require("mongodb");
 const { fileURLToPath } = require("url");
+const expressSession = require('express-session');
 
 
 const url = 'mongodb+srv://brosephina:Password123@cluster0.og3yx.mongodb.net/myData?retryWrites=true&w=majority';
@@ -59,8 +60,25 @@ exports.loginUser = async (req,res) => {
     await client.connect();
     const filteredDocs = await collection.findOne({username: req.body.username})
     client.close();
-    if (filteredDocs.password == req.body.password)
+    if (filteredDocs.password == req.body.password){
+        req.session.user = {  //session variable (user) gets saved as a cookie
+            isAuthenticated: true,
+            username: req.body.username
+        }
         res.redirect(`/index/${filteredDocs._id}`);
+    }else {
+        res.redirect('/login');
+    }
+}
+
+exports.logout = (req,res) => {
+    req.session.destroy(err => {
+        if(err){
+            console.log(err);
+        }else {
+            res.redirect('/login');
+        }
+    });
 }
 
 exports.edit = async  (req, res) => {
