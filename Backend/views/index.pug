@@ -6,14 +6,13 @@ block content
             th Name
             th Age
             th Email
-            th 
-            th 
+            th Last Visited
             tr
                 td #{users.username}
                 td #{users.age}
                 td #{users.email} 
-                td
-    p
+                td 
+    p 
         a(href='/edit/' + users._id) Edit info
         //- swap '/create' to /edit when edit.pug is finished
         a(href="/logout")

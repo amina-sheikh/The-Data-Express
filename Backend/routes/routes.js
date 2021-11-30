@@ -36,16 +36,36 @@ exports.createUser = async (req, res) => {
     res.redirect('/login'); // change path to the login page's path
 }
 
+
 //index reference
 exports.index = async (req, res) => {
     await client.connect();
     const filteredDocs = await collection.findOne({_id: ObjectId(req.params.id)});
     client.close();
+    // let lastVisited = visited || Date.now();
+
+    // let visited = Date.now();
+    // res.cookie('visited', visited, {maxAge: 9999999999999999999999999999999999999});
+    // res.cookie('lastVisited', lastVisited, {maxAge: 9999999999999999999999999999999999999});
+
+
+    // if(req.cookies.beenToSiteBefore == 'yes'){
+    //     res.send('you have been here ${req.cookies.visited} times before, got me sheeshin');
+    // } else {
+    //     res.cookie('beenToSiteBefore', 'yes',  {maxAge: 9999999999999999999999999999999999999});
+    //     res.send('This is your first time here');
+    // }
+
+
     res.render('index', {
         title: 'Welcome',
-        users: filteredDocs
+        users: filteredDocs,
+      //  cookie: req.cookies.lastVisited
     });
+    
+
 };
+
 
 //Loads the login page
 exports.login = (req, res) => {

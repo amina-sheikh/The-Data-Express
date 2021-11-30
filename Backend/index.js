@@ -2,13 +2,16 @@ const express = require('express'),
     pug = require('pug'),
     path = require('path'),
     routes = require('./routes/routes.js');
+    cookieParser = require('cookie-parser')
     expressSession = require('express-session');
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '\\views');
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/views')));
+
+app.use(cookieParser());
 
 app.use(expressSession({
     secret: "OurS3crEt!",
