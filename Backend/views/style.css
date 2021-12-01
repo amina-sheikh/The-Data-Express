@@ -4,6 +4,7 @@ body {
     width: 80%;
     padding: 20px;
     background-color: #eeb;
+    text-align: center;
 
 }
 
@@ -12,7 +13,7 @@ table.gridtable {
     border-width: 1px;
     border-color: #559;
     border-collapse: collapse;
-
+    display: inline-block;
 }
 
 table.gridtable th {

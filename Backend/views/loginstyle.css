@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    background: rgb(211, 208, 159);
+}
+form {
+    left: 50%; 
+    background-color: #fff;
+    padding: 40px;
+    display: inline-block;
+    margin: auto;
+}
+input[ name='username'],input[name='password'] {
+    outline: none;
+    display: block;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    font-family: "Roboto";
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+}
+input[name='submitBtn']:hover {
+    background-color: rgb(0, 255, 221);
+    cursor: pointer;
+}

@@ -16,7 +16,7 @@ block content
         br
         //- password
         label(for='password') Password:
-        input(type='text' name='password' value=users.password)
+        input(type='text' name='password' value="")
         br
         //- answer1
         label(for='answer1') What is your favorite Pet: 
@@ -44,4 +44,8 @@ block content
             option(value='Candy') Candy
             option(value='Crackers') Crackers
             option(value='Cookies') Cookies 
+        br
         input(type='submit' value='Update User')
+        br
+        br
+        a(href='/index/' + users._id) Cancel
