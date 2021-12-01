@@ -2,6 +2,8 @@ const { request } = require("express");
 const {MongoClient, ObjectId, ConnectionCheckedInEvent, Collection} = require("mongodb");
 const { fileURLToPath } = require("url");
 const expressSession = require('express-session');
+const bcrypt = require('bcryptjs');
+const { Console } = require("console");
 
 
 const url = 'mongodb+srv://brosephina:Password123@cluster0.og3yx.mongodb.net/myData?retryWrites=true&w=majority';
@@ -21,11 +23,14 @@ exports.create = (req, res) => {
 // Stores the data from the create user page
 exports.createUser = async (req, res) => {
     await client.connect();
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt);
     let user = {
         username: req.body.username,
         email: req.body.email,
         age: req.body.age,
-        password: req.body.password,
+        password: hash,
+        //password: req.body.password,
         answer1: req.body.answer1,
         answer2: req.body.answer2,
         answer3: req.body.answer3 
@@ -69,11 +74,16 @@ exports.loginUser = async (req,res) => {
     await client.connect();
     const filteredDocs = await collection.findOne({username: req.body.username})
     client.close();
-    if (filteredDocs.password == req.body.password){
+    console.log(filteredDocs.password);
+    const compare = bcrypt.compareSync(req.body.password, filteredDocs.password, (err, res) => {});
+    console.log("Logging in");
+    console.log(compare);
+    if (compare){
         req.session.user = {  //session variable (user) gets saved as a cookie
             isAuthenticated: true,
             username: req.body.username
         }
+        console.log("Successfully logged in");
         res.redirect(`/index/${filteredDocs._id}`);
     }else {
         res.redirect('/login');
@@ -102,13 +112,16 @@ exports.edit = async  (req, res) => {
 
 exports.editPerson = async (req,res) => {
     await client.connect();
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt);
     const updateResult = await collection.updateOne(
         { _id: ObjectId(req.params.id) },
         { $set: {
             username: req.body.username,
             email: req.body.email,
             age: req.body.age,
-            password: req.body.password,
+            password: hash,
+            //password: req.body.password,
             answer1: req.body.answer1,
             answer2: req.body.answer2,
             answer3: req.body.answer3
