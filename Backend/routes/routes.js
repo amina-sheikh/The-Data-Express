@@ -5,7 +5,6 @@ const expressSession = require('express-session');
 const bcrypt = require('bcryptjs');
 const { Console } = require("console");
 
-
 const url = 'mongodb+srv://brosephina:Password123@cluster0.og3yx.mongodb.net/myData?retryWrites=true&w=majority';
 const client = new MongoClient(url);
 
@@ -30,7 +29,6 @@ exports.createUser = async (req, res) => {
         email: req.body.email,
         age: req.body.age,
         password: hash,
-        //password: req.body.password,
         answer1: req.body.answer1,
         answer2: req.body.answer2,
         answer3: req.body.answer3 
@@ -38,8 +36,9 @@ exports.createUser = async (req, res) => {
     const insertResult = await collection.insertOne(user);
     client.close();
     console.log(req.body.username + ' added');
-    res.redirect('/login'); // change path to the login page's path
+    res.redirect('/login'); 
 }
+
 let lastVisited = '';
 const date = `${new Date()}`;
 
@@ -51,7 +50,6 @@ exports.index = async (req, res) => {
     
     lastVisited = req.cookies.lastVisited || date;
     res.cookie('lastVisited', date, {maxAge: 9999999999999999999999999999999999999});
-
 
     res.render('index', {
         title: 'Welcome',
@@ -139,3 +137,88 @@ exports.editPerson = async (req,res) => {
     client.close();
     res.redirect(`/index/${req.params.id}`);
 };
+
+exports.api = async (req,res) => {
+    await client.connect();
+    myjson = await collection.find({}).toArray();
+    client.close()
+    let catanswer = 0;
+    let doganswer = 0;
+    let snakeanswer = 0;
+    let fishanswer = 0;
+    let busanswer = 0;
+    let traxanswer = 0;
+    let caranswer = 0;
+    let bikeanswer = 0;
+    let chipsanswer = 0;
+    let candyanswer = 0;
+    let crackersanswer = 0;
+    let cookiesanswer = 0;
+    for(let i=0; i < myjson.length; i++){
+        switch(myjson[i].answer1){
+            case "Cat":
+                catanswer++;
+                break;
+            case "Dog":
+                doganswer++;
+                break;
+            case "Snake":
+                snakeanswer++;
+                break;
+            case "Fish":
+                fishanswer++;
+                break;
+        }
+        switch(myjson[i].answer2){
+            case "Bus":
+                busanswer++;
+                break;
+            case "Trax":
+                traxanswer++;
+                break;
+            case "Car":
+                caranswer++;
+                break;
+            case "Bike":
+                bikeanswer++;
+                break;
+        }
+        switch(myjson[i].answer3){
+            case "Chips":
+                chipsanswer++;
+                break;
+            case "Candy":
+                candyanswer++;
+                break;
+            case "Crackers":
+                crackersanswer++;
+                break;
+            case "Cookies":
+                cookiesanswer++;
+                break;
+        }
+    }
+    res.json({
+        "What is your favorite pet?" : 
+        {
+            Cat : catanswer,
+            Dog : doganswer,
+            Snake : snakeanswer,
+            Fish : fishanswer,
+        },
+        "How do you get to school?" :
+        {
+            Bus : busanswer,
+            Trax : traxanswer,
+            Car : caranswer,
+            Bike : bikeanswer,
+        },
+        "What is your favorite snack?" :
+        {
+            Chips: chipsanswer,
+            Candy : candyanswer,
+            Crackers : crackersanswer,
+            Cookies : cookiesanswer,
+        }
+    });
+}
