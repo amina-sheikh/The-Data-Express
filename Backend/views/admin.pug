@@ -1,0 +1,28 @@
+extends layout 
+
+block content
+    table(class = 'gridtable')
+        tr
+            th Name
+            th Age
+            th Email
+            th Access
+            th Delete
+            th Grant Admin
+        each user in database
+            tr 
+                td #{user.username}
+                td #{user.age}
+                td #{user.email} 
+                td #{user.accessType}
+                td
+                    a(href='/delete/' + user._id) Delete 
+                td 
+                    a(href='/addAdmin/' + user._id) Make admin
+    p(id='lastVisit') 
+        a(href='/edit/' + users._id) Edit your info
+        br
+        br
+        a(href="/logout")
+            button(type="button") Log Out
+    

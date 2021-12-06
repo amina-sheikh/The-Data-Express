@@ -31,7 +31,8 @@ exports.createUser = async (req, res) => {
         password: hash,
         answer1: req.body.answer1,
         answer2: req.body.answer2,
-        answer3: req.body.answer3 
+        answer3: req.body.answer3,
+        accessType: "user"
     };
     const insertResult = await collection.insertOne(user);
     client.close();
@@ -78,7 +79,16 @@ exports.loginUser = async (req,res) => {
             isAuthenticated: true,
             username: req.body.username
         }
+        
+        // Determines if login is for user or admin
+        if(filteredDocs.accessType=='admin')
+        {
+            res.redirect(`/admin/${filteredDocs._id}`);
+        }
+        else
+        {
         res.redirect(`/index/${filteredDocs._id}`);
+        }
     }else {
         res.redirect('/login');
     }
@@ -222,3 +232,46 @@ exports.api = async (req,res) => {
         }
     });
 }
+
+// Used to refresh the page when deleting or making admins
+let adminID = "";
+
+// Admin page -- Loads the pug page
+exports.admin = async (req, res) => {
+    await client.connect();
+    const filteredDocs = await collection.findOne({_id: ObjectId(req.params.id)});
+    const findResult = await collection.find({}).toArray();
+    console.log("Found documents => ", findResult);
+    client.close();
+    adminID = req.params.id;
+    res.render('admin', {
+        title: 'Users',
+        database: findResult,
+        users: filteredDocs
+    });
+};
+
+
+// Delete method -- COMPLETE 
+exports.delete = async (req, res) => {
+    await client.connect();
+    const deleteResult = await collection.deleteOne({_id: ObjectId(req.params.id)});
+    client.close();
+    // updates list
+    res.redirect(`/admin/${adminID}`);
+
+};
+
+// Makes users admins
+exports.addAdmin = async (req, res) => {
+await client.connect();
+    const updateResult = await collection.updateOne(
+        { _id: ObjectId(req.params.id) },
+        { $set: {
+            accessType: "admin"
+        }}
+    )
+    client.close();
+    // updates list
+    res.redirect(`/admin/${adminID}`);
+};

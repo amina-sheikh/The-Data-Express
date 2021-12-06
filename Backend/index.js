@@ -47,7 +47,8 @@ app.get('/logout', routes.logout);
 app.get('/edit/:id', routes.edit);
 app.post('/edit/:id', urlencodedParser, routes.editPerson);
 app.get('/api', routes.api);
-//app.get('/delete/:id', routes.delete);
-//app.get('/details/:id', routes.details);
+app.get('/admin/:id',checkAuth, routes.admin);
+app.get('/delete/:id', routes.delete);
+app.get('/addAdmin/:id', routes.addAdmin);
 
 app.listen(3000);
