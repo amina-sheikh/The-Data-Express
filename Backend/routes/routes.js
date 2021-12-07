@@ -15,7 +15,7 @@ const collection = db.collection('Users');
 // Creates the create user page
 exports.create = (req, res) => {
     res.render('create', {
-        title: 'Add User'
+        title: ''
     });
 };
 
@@ -62,7 +62,7 @@ exports.index = async (req, res) => {
 //Loads the login page
 exports.login = (req, res) => {
     res.render('login', {
-        title: 'Log In'
+        title: ''
     });
 };
 
