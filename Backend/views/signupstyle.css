@@ -15,6 +15,7 @@ form {
     height: 650px;
     width: 500px;
     border-radius: 10px;
+    font-family: "Montserrat";
 }
 
 h3 {
@@ -35,6 +36,7 @@ input[ name='username'],input[name='password'],input[name='email'], input[name='
     border-radius: 10px;
     margin: 20px 0px 20px 0px;
     width: 500px;
+    font-weight: bold;
 }
 
 form label {
@@ -58,7 +60,7 @@ select {
     cursor: pointer;
 }
 
-input[name='submitBtn']{
+input[name='submitBtn'], input[name='updateBtn']{
     /* background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%); */
     background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
     width: 300px;
@@ -66,13 +68,13 @@ input[name='submitBtn']{
     border-radius: 10px;
     padding: 15px;
     border: none;
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0px -10px 0px;
     font-family: "Montserrat";
     font-size: 18px;
     color: #fff;
 }
 
-input[name='submitBtn']:hover {
+input[name='submitBtn']:hover, input[name='updateBtn']:hover  {
     background-position: right center;
     cursor: pointer;
 }

@@ -1,51 +1,59 @@
-extends layout
-
-block content 
-    form(id='form' method='post' action='/edit/' + users._id)
-        //- username
-        label(for='username') Username: 
-        input(type='text' name='username' value=users.username)
-        br
-        //- email
-        label(for='email') Email:
-        input(type='text' name='email' value=users.email)
-        br
-        //- age
-        label(for='age') Age:
-        input(type='text' name='age' value=users.age)
-        br
-        //- password
-        label(for='password') Password:
-        input(type='text' name='password' value="")
-        br
-        //- answer1
-        label(for='answer1') What is your favorite Pet: 
-        select(name='answer1')
-            option(selected = users.answer1) #{users.answer1}
-            option(value='Dog') Dog
-            option(value='Cat') Cat
-            option(value='Snake') Snake
-            option(value='Fish') Fish
-        br
-        //- answer2
-        label(for='answer2') How do you get to school: 
-        select(name='answer2')
-            option(selected = users.answer2) #{users.answer2}
-            option(value='Bus') Bus
-            option(value='Trax') Trax
-            option(value='Car') Car
-            option(value='Bike') Bike 
-        br
-        //- answer3
-        label(for='answer3') What is your favorite snack: 
-        select(name='answer3')
-            option(selected = users.answer3) #{users.answer3}
-            option(value='Chips') Chips
-            option(value='Candy') Candy
-            option(value='Crackers') Crackers
-            option(value='Cookies') Cookies 
-        br
-        input(type='submit' value='Update User')
-        br
-        br
-        a(href='/index/' + users._id) Cancel
+html
+    head
+        title=title
+        link(href='/signupstyle.css' rel='stylesheet')
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet")
+    body
+        h3=title
+        block content 
+            form(id='form' method='post' action='/edit/' + users._id)
+                h3 Edit User
+                //- username
+                //- label(for='username') Username: 
+                input(type='text' name='username' value=users.username)
+                br
+                //- email
+                //- label(for='email') Email:
+                input(type='text' name='email' value=users.email)
+                br
+                //- age
+                //- label(for='age') Age:
+                input(type='text' name='age' value=users.age)
+                br
+                //- password
+                //- label(for='password') Password:
+                input(type='text' name='password' value="" placeholder='password')
+                br
+                //- answer1
+                label(for='answer1') #[strong What is your favorite Pet:] 
+                select(name='answer1')
+                    option(selected = users.answer1) #{users.answer1}
+                    option(value='Dog') Dog
+                    option(value='Cat') Cat
+                    option(value='Snake') Snake
+                    option(value='Fish') Fish
+                br
+                //- answer2
+                label(for='answer2') #[strong How do you get to school:]
+                select(name='answer2')
+                    option(selected = users.answer2) #{users.answer2}
+                    option(value='Bus') Bus
+                    option(value='Trax') Trax
+                    option(value='Car') Car
+                    option(value='Bike') Bike 
+                br
+                //- answer3
+                label(for='answer3') #[strong What is your favorite snack:]
+                select(name='answer3')
+                    option(selected = users.answer3) #{users.answer3}
+                    option(value='Chips') Chips
+                    option(value='Candy') Candy
+                    option(value='Crackers') Crackers
+                    option(value='Cookies') Cookies 
+                br
+                input(type='submit' value='Update User' name='updateBtn')
+                br
+                br
+                a(href='/index/' + users._id) #[strong Cancel]

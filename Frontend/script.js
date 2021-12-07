@@ -46,37 +46,41 @@ const drawQ1 = myData => {
     ctx1.fillStyle = "black"
     ctx1.textAlign = "left"
     ctx1.fillText(q1a1 + myData["What is your favorite pet?"].Cat, q1c.width/8, 120);
-    ctx1.fillStyle = "red"
+    ctx1.fillStyle = "#D2B48C"
     ctx1.fillRect((q1c.width/8)-40, 120, 30, -20)
 
     ctx1.font = "30px Calibri";
     ctx1.fillStyle = "black"
     ctx1.textAlign = "left"
     ctx1.fillText(q1a2 + myData["What is your favorite pet?"].Dog, q1c.width/8, 180);
-    ctx1.fillStyle = "blue"
+    ctx1.fillStyle = "#FFA07A"
     ctx1.fillRect((q1c.width/8)-40, 180, 30, -20)
 
     ctx1.font = "30px Calibri";
     ctx1.fillStyle = "black"
     ctx1.textAlign = "left"
     ctx1.fillText(q1a3 + myData["What is your favorite pet?"].Snake, q1c.width/8, 240);
-    ctx1.fillStyle = "green"
+    ctx1.fillStyle = "#FFDEAD"
     ctx1.fillRect((q1c.width/8)-40, 240, 30, -20)
 
     ctx1.font = "30px Calibri";
     ctx1.fillStyle = "black"
     ctx1.textAlign = "left"
     ctx1.fillText(q1a4 + myData["What is your favorite pet?"].Fish, q1c.width/8, 300);
-    ctx1.fillStyle = "purple"
+    ctx1.fillStyle = "#FFB6C1"
     ctx1.fillRect((q1c.width/8)-40, 300, 30, -20)
 
-    ctx1.fillStyle = "red"
+    // ctx1.fillStyle = "red"
+    ctx1.fillStyle = "#D2B48C"
     ctx1.fillRect(barStartX, 300, a1length, -200)
-    ctx1.fillStyle = "blue"
+    // ctx1.fillStyle = "blue"
+    ctx1.fillStyle = "#FFA07A"
     ctx1.fillRect(barStartX+a1length, 300, a2length, -200)
-    ctx1.fillStyle = "green"
+    // ctx1.fillStyle = "green"
+    ctx1.fillStyle = "#FFDEAD"
     ctx1.fillRect(barStartX+a1length+a2length, 300, a3length, -200)
-    ctx1.fillStyle = "purple"
+    // ctx1.fillStyle = "purple"
+    ctx1.fillStyle = "#FFB6C1"
     ctx1.fillRect(barStartX+a1length+a2length+a3length, 300, a4length, -200)
 }
 fetch(url)
@@ -99,37 +103,37 @@ const drawQ2 = myData => {
     ctx2.fillStyle = "black"
     ctx2.textAlign = "left"
     ctx2.fillText(q2a1 + myData["How do you get to school?"].Bus, q1c.width/8, 120);
-    ctx2.fillStyle = "red"
+    ctx2.fillStyle = "#D2B48C"
     ctx2.fillRect((q1c.width/8)-40, 120, 30, -20)
 
     ctx2.font = "30px Calibri";
     ctx2.fillStyle = "black"
     ctx2.textAlign = "left"
     ctx2.fillText(q2a2 + myData["How do you get to school?"].Trax, q1c.width/8, 180);
-    ctx2.fillStyle = "blue"
+    ctx2.fillStyle = "#FFA07A"
     ctx2.fillRect((q1c.width/8)-40, 180, 30, -20)
 
     ctx2.font = "30px Calibri";
     ctx2.fillStyle = "black"
     ctx2.textAlign = "left"
     ctx2.fillText(q2a3 + myData["How do you get to school?"].Car, q1c.width/8, 240);
-    ctx2.fillStyle = "green"
+    ctx2.fillStyle = "#FFDEAD"
     ctx2.fillRect((q1c.width/8)-40, 240, 30, -20)
 
     ctx2.font = "30px Calibri";
     ctx2.fillStyle = "black"
     ctx2.textAlign = "left"
     ctx2.fillText(q2a4 + myData["How do you get to school?"].Bike, q1c.width/8, 300);
-    ctx2.fillStyle = "purple"
+    ctx2.fillStyle = "#FFB6C1"
     ctx2.fillRect((q1c.width/8)-40, 300, 30, -20)
     
-    ctx2.fillStyle = "red"
+    ctx2.fillStyle = "#D2B48C"
     ctx2.fillRect(barStartX, 300, a1length, -200)
-    ctx2.fillStyle = "blue"
+    ctx2.fillStyle = "#FFA07A"
     ctx2.fillRect(barStartX+a1length, 300, a2length, -200)
-    ctx2.fillStyle = "green"
+    ctx2.fillStyle = "#FFDEAD"
     ctx2.fillRect(barStartX+a1length+a2length, 300, a3length, -200)
-    ctx2.fillStyle = "purple"
+    ctx2.fillStyle = "#FFB6C1"
     ctx2.fillRect(barStartX+a1length+a2length+a3length, 300, a4length, -200)
     }
 fetch(url)
@@ -152,37 +156,37 @@ const drawQ3 = myData => {
     ctx3.fillStyle = "black"
     ctx3.textAlign = "left"
     ctx3.fillText(q3a1 + myData["What is your favorite snack?"].Chips, q1c.width/8, 120);
-    ctx3.fillStyle = "red"
+    ctx3.fillStyle = "#D2B48C"
     ctx3.fillRect((q1c.width/8)-40, 120, 30, -20)
 
     ctx3.font = "30px Calibri";
     ctx3.fillStyle = "black"
     ctx3.textAlign = "left"
     ctx3.fillText(q3a2 + myData["What is your favorite snack?"].Candy, q1c.width/8, 180);
-    ctx3.fillStyle = "blue"
+    ctx3.fillStyle = "#FFA07A"
     ctx3.fillRect((q1c.width/8)-40, 180, 30, -20)
 
     ctx3.font = "30px Calibri";
     ctx3.fillStyle = "black"
     ctx3.textAlign = "left"
     ctx3.fillText(q3a3 + myData["What is your favorite snack?"].Crackers, q1c.width/8, 240);
-    ctx3.fillStyle = "green"
+    ctx3.fillStyle = "#FFDEAD"
     ctx3.fillRect((q1c.width/8)-40, 240, 30, -20)
 
     ctx3.font = "30px Calibri";
     ctx3.fillStyle = "black"
     ctx3.textAlign = "left"
     ctx3.fillText(q3a4 + myData["What is your favorite snack?"].Cookies, q1c.width/8, 300);
-    ctx3.fillStyle = "purple"
+    ctx3.fillStyle = "#FFB6C1"
     ctx3.fillRect((q1c.width/8)-40, 300, 30, -20)
     
-    ctx3.fillStyle = "red"
+    ctx3.fillStyle = "#D2B48C"
     ctx3.fillRect(barStartX, 300, a1length, -200)
-    ctx3.fillStyle = "blue"
+    ctx3.fillStyle = "#FFA07A"
     ctx3.fillRect(barStartX+a1length, 300, a2length, -200)
-    ctx3.fillStyle = "green"
+    ctx3.fillStyle = "#FFDEAD"
     ctx3.fillRect(barStartX+a1length+a2length, 300, a3length, -200)
-    ctx3.fillStyle = "purple"
+    ctx3.fillStyle = "#FFB6C1"
     ctx3.fillRect(barStartX+a1length+a2length+a3length, 300, a4length, -200)
     }
 fetch(url)

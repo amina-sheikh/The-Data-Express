@@ -48,14 +48,20 @@ exports.index = async (req, res) => {
     await client.connect();
     const filteredDocs = await collection.findOne({_id: ObjectId(req.params.id)});
     client.close();
-    
+    // Used to display then update the cookie storing lastVisited
     lastVisited = req.cookies.lastVisited || date;
     res.cookie('lastVisited', date, {maxAge: 9999999999999999999999999999999999999});
+
+    // Used to hide/show the link that leads to /admin
+    let admin = '';
+    if(access=='admin'){admin = 'List of users'}
+    else{}
 
     res.render('index', {
         title: 'Welcome',
         users: filteredDocs,
-        cookie: lastVisited // req.cookies.lastVisited
+        cookie: lastVisited,
+        access: admin
     });
 };
 
@@ -66,6 +72,9 @@ exports.login = (req, res) => {
         title: ''
     });
 };
+
+// Used to swap paths related to access level
+let access = '';
 
 //Gets data from login page and checks if it's in the database
     //Then, it logs the user in if it is
@@ -82,13 +91,10 @@ exports.loginUser = async (req,res) => {
         
         // Determines if login is for user or admin
         if(filteredDocs.accessType=='admin')
-        {
-            res.redirect(`/admin/${filteredDocs._id}`);
-        }
+        { access = 'admin'; }
         else
-        {
+        { access = 'user';  }
         res.redirect(`/index/${filteredDocs._id}`);
-        }
     }else {
         res.redirect('/login');
     }
@@ -109,7 +115,7 @@ exports.edit = async  (req, res) => {
     const filterDocs = await collection.find(ObjectId(req.params.id)).toArray()
     client.close();
     res.render('edit', {
-        title: 'Edit User',
+        title: '',
         users: filterDocs[0]
     });
 };
@@ -146,6 +152,16 @@ exports.editPerson = async (req,res) => {
     }
     client.close();
     res.redirect(`/index/${req.params.id}`);
+};
+
+exports.editA = async  (req, res) => {
+    await client.connect();
+    const filterDocs = await collection.find(ObjectId(req.params.id)).toArray()
+    client.close();
+    res.render('editAdmin', {
+        title: 'Edit Yourself',
+        users: filterDocs[0]
+    });
 };
 
 exports.api = async (req,res) => {
@@ -244,10 +260,15 @@ exports.admin = async (req, res) => {
     console.log("Found documents => ", findResult);
     client.close();
     adminID = req.params.id;
+
+    lastVisited = req.cookies.lastVisited || date;
+    res.cookie('lastVisited', date, {maxAge: 9999999999999999999999999999999999999});
+
     res.render('admin', {
-        title: 'Users',
+        title: 'List of Users',
         database: findResult,
-        users: filteredDocs
+        users: filteredDocs,
+        cookie: lastVisited
     });
 };
 

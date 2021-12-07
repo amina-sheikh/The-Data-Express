@@ -7,15 +7,28 @@ block content
             th Age
             th Email
             th Last Visited
+            th
             tr
                 td #{users.username}
                 td #{users.age}
                 td #{users.email} 
                 td #{cookie}
+                td 
+                    a(href='/edit/' + users._id) Edit info
     p(id='lastVisit') 
-        a(href='/edit/' + users._id) Edit info
+<<<<<<< HEAD
+<<<<<<< HEAD
+        a(href='/edit/' + users._id) 
+            button(type="button" name='editBtn') #[strong Edit info]
+        
+=======
+=======
+>>>>>>> f01b6921f2187a09a135f8c0e759963afcc662c5
+        a(href='/admin/' + users._id) #{access}
+
         br
         br
+>>>>>>> f01b6921f2187a09a135f8c0e759963afcc662c5
         a(href="/logout")
-            button(type="button") Log Out
+            button(type="button") #[strong Log Out]
     

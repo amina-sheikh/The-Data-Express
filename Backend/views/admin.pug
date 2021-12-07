@@ -2,6 +2,7 @@ extends layout
 
 block content
     table(class = 'gridtable')
+    
         tr
             th Name
             th Age
@@ -20,9 +21,19 @@ block content
                 td 
                     a(href='/addAdmin/' + user._id) Make admin
     p(id='lastVisit') 
-        a(href='/edit/' + users._id) Edit your info
+<<<<<<< HEAD
+<<<<<<< HEAD
+        a(href='/edit/' + users._id) 
+            button(type="button") #[strong Edit your info]
+        //- br
+        //- br
+=======
+=======
+>>>>>>> f01b6921f2187a09a135f8c0e759963afcc662c5
+        a(href='/index/' + users._id) Return to your page
         br
         br
+>>>>>>> f01b6921f2187a09a135f8c0e759963afcc662c5
         a(href="/logout")
-            button(type="button") Log Out
+            button(type="button") #[strong Log Out]
     

@@ -1,6 +1,7 @@
 body {
     text-align: center;
-    background: rgb(211, 208, 159);
+    /* background: rgb(211, 208, 159); */
+    background-color: #F7BB97;
 }
 
 canvas {
