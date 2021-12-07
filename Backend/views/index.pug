@@ -7,15 +7,15 @@ block content
             th Age
             th Email
             th Last Visited
+            th
             tr
                 td #{users.username}
                 td #{users.age}
                 td #{users.email} 
                 td #{cookie}
+                td 
+                    a(href='/edit/' + users._id) Edit info
     p(id='lastVisit') 
-        a(href='/edit/' + users._id) Edit info
-        br
-        br
         a(href='/admin/' + users._id) #{access}
 
         br
